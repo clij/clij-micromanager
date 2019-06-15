@@ -2,8 +2,10 @@ package net.haesleinhuepf.clij.converters.implementations;
 
 import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
 import net.haesleinhuepf.clij.converters.AbstractCLIJConverter;
+import net.haesleinhuepf.clij.converters.CLIJConverterPlugin;
 import net.haesleinhuepf.clij.coremem.enums.NativeTypeEnum;
 import net.haesleinhuepf.clij.micromanager.NioBuffer;
+import org.scijava.plugin.Plugin;
 
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -19,6 +21,7 @@ import java.nio.ShortBuffer;
  * Author: @haesleinhuepf
  * 6 2019
  */
+@Plugin(type = CLIJConverterPlugin.class)
 public class ClearCLBufferToNioBufferConverter  extends AbstractCLIJConverter<ClearCLBuffer, NioBuffer> {
 
     @Override
