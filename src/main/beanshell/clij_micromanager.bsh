@@ -1,0 +1,42 @@
+// This example script shows how to run CLIJ from MicroManager
+// In order to get it run, copy the CLIJ jar-files from the release
+// (https://github.com/clij/clij/releases) in the
+// plugins directory of MicroManager.
+// Tested with MMSetup_64bit_2.0.0-gamma1_20190611 and clij-core branch nioConverters
+//
+// Author: Robert Haase, Nico Stuurman
+// June 2019
+/////////////////////////////////////////////////////////////////////
+
+import net.haesleinhuepf.clij.CLIJ;
+import ij.IJ;
+import net.haesleinhuepf.clij.converters.implementations.ClearCLBufferToImagePlusConverter;
+import net.haesleinhuepf.clij.converters.implementations.ImagePlusToClearCLBufferConverter;
+import net.haesleinhuepf.clij.converters.implementations.NioBufferToClearCLBufferConverter;
+import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
+import net.haesleinhuepf.clij.converters.NioBuffer;
+import org.micromanager.data.internal.DefaultImage;
+
+// initialize CLIJ
+clij = CLIJ.getInstance();
+IJ.log(clij.clinfo());
+
+// get some test data
+mmImg = (DefaultImage) mm.live().snap(true).get(0);
+dims = new long[] {mmImg.getWidth(), mmImg.getHeight()};
+mmImgNIO = new NioBuffer(mmImg.getPixelBuffer(),dims);
+
+// send image to GPU and allocate some memory for result image
+gpu_input = clij.convert(mmImgNIO, ClearCLBuffer.class);
+gpu_output = clij.create(gpu_input);
+
+// blur the image
+clij.op().blur(gpu_input, gpu_output, 10, 10);
+
+// get the result back from the GPU and show it
+imp = clij.pull(gpu_output);
+imp.show();
+
+// clean up memory on the GPU
+gpu_input.close();
+gpu_output.close();
