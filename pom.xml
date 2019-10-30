@@ -8,13 +8,13 @@
 	<parent>
 		<groupId>net.haesleinhuepf</groupId>
 		<artifactId>clij-parent-pom</artifactId>
-		<version>1.0.4</version>
+		<version>1.4.0</version>
 		<relativePath />
 	</parent>
 
 	<groupId>net.haesleinhuepf</groupId>
 	<artifactId>clij-micromanager</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 
 	<name>clij-micromanager</name>
 	<description>clij-micromanager</description>
@@ -103,6 +103,38 @@
 			<groupId>net.haesleinhuepf</groupId>
 			<artifactId>clij-core</artifactId>
      	</dependency>
+
+		<dependency>
+			<groupId>net.haesleinhuepf</groupId>
+			<artifactId>clij-advanced-filters_</artifactId>
+			<version>0.11.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>org.micromanager</artifactId>
+			<groupId>MMJ_</groupId>
+			<scope>system</scope>
+			<version>0</version>
+			<systemPath>C:/programs/Micro-Manager-2.0gamma/plugins/Micro-Manager/MMJ_.jar</systemPath>
+		</dependency>
+		<dependency>
+			<artifactId>org.micromanager</artifactId>
+			<groupId>MMCoreJ</groupId>
+			<scope>system</scope>
+			<version>0</version>
+			<systemPath>C:/programs/Micro-Manager-2.0gamma/plugins/Micro-Manager/MMCoreJ.jar</systemPath>
+		</dependency>
+		<dependency>
+			<artifactId>com.bulenkov</artifactId>
+			<groupId>iconloader</groupId>
+			<scope>system</scope>
+			<version>0</version>
+			<systemPath>C:/programs/Micro-Manager-2.0gamma/plugins/Micro-Manager/iconloader-GIT.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<repositories>

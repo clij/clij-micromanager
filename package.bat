@@ -1,0 +1,1 @@
+mvn -Denforcer.skip=true clean package
